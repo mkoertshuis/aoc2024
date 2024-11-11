@@ -1,0 +1,8 @@
+# Development
+*.venv*
+*__pycache__*
+*.pyc
+*.egg-info
+
+# Cookies
+cookies.txt
