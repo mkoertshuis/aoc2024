@@ -1,12 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 from http.cookiejar import MozillaCookieJar
+from pathlib import Path
 
+ROOT = Path(__file__).parent.parent
 
 # Load cookies for authentication
 cookies = MozillaCookieJar()
 try:
-    cookies.load("cookies.txt", ignore_discard=True, ignore_expires=True)
+    cookies.load(ROOT / "cookies.txt", ignore_discard=True, ignore_expires=True)
 except FileNotFoundError:
     print(
         "There is no cookies file.\nPlease add your AoC \
