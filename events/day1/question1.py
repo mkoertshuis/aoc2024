@@ -13,10 +13,10 @@ def sort_arrays(arr):
 
 
 def get_distance(arr):
-    new_arr = np.apply_along_axis(lambda x: np.abs(x[0]-x[1]), axis=-1, arr=arr)
+    new_arr = np.apply_along_axis(lambda x: np.abs(x[0] - x[1]), axis=-1, arr=arr)
     return new_arr.sum(axis=-1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     raw_input = get_input(1, 2024)
-    print("Question1:",get_distance(sort_arrays(parse(raw_input))))
+    print("Question1:", get_distance(sort_arrays(parse(raw_input))))
