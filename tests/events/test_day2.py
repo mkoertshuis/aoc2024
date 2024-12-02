@@ -1,6 +1,5 @@
 import unittest
 from events.day2.question1 import parse, sum_safe
-from utils.parser import split_input
 
 raw_input = """7 6 4 2 1
 1 2 7 8 9
