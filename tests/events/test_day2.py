@@ -1,6 +1,5 @@
 import unittest
-from events.day2.question1 import sum_safe
-from events.day2.question2 import sum_safe_dampener
+from events.day2.question1 import parse, sum_safe
 from utils.parser import split_input
 
 raw_input = """7 6 4 2 1
@@ -10,13 +9,14 @@ raw_input = """7 6 4 2 1
 8 6 4 4 1
 1 3 6 7 9"""
 
+
 class TestQuestion1(unittest.TestCase):
     def test_answer(self):
-        arr = split_input(raw_input)
+        arr = parse(raw_input)
         self.assertEqual(sum_safe(arr), 2)
+
 
 class TestQuestion2(unittest.TestCase):
     def test_answer(self):
-        arr = split_input(raw_input)
-        self.assertEqual(sum_safe_dampener(arr), 4)
-
+        arr = parse(raw_input)
+        self.assertEqual(sum_safe(arr, 1), 4)
