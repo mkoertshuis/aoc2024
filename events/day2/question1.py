@@ -1,4 +1,4 @@
-from datetime import datetime
+import time
 from utils.network import get_input
 from utils.parser import split_input
 import numpy as np
@@ -41,8 +41,8 @@ def sum_safe(arr: list[np.ndarray[int]], error: int = 0) -> int:
 if __name__ == "__main__":
     raw_input = get_input(2, 2024)
     arr = parse(raw_input)
-    start = datetime.now()
+    start = time.perf_counter()
     answer = sum_safe(arr)
-    end = datetime.now()
+    end = time.perf_counter()
 
-    print(f"Question 1: {answer} in {(end-start).microseconds} ms")
+    print(f"Question 1: {answer} in {(end-start)*1000:.2f} ms")

@@ -1,4 +1,4 @@
-from datetime import datetime
+import time
 from events.day2.question1 import parse, sum_safe
 from utils.network import get_input
 
@@ -8,8 +8,8 @@ from utils.network import get_input
 if __name__ == "__main__":
     raw_input = get_input(2, 2024)
     arr = parse(raw_input)
-    start = datetime.now()
+    start = time.perf_counter()
     answer = sum_safe(arr, 1)
-    end = datetime.now()
+    end = time.perf_counter()
 
-    print(f"Question 2: {answer} in {(end-start).microseconds} ms")
+    print(f"Question 2: {answer} in {(end-start)*1000:.2f} ms")
