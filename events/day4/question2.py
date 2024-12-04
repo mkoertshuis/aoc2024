@@ -18,7 +18,7 @@ def find_words(arr: list[str], x: int, y: int):
             if x + x0 < 0 or x + x1 < 0 or y + y0 < 0 or y + y1 < 0:
                 return 0
             # Find diagonal
-            if set([arr[x + x0][y + y0], arr[x + x1][y + y1]]) == set(["M", "S"]):
+            if set(arr[x + x0][y + y0] + arr[x + x1][y + y1]) == set("MS"):
                 answer += 1
         except IndexError:
             continue
