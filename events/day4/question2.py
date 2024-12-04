@@ -22,7 +22,7 @@ def find_words(arr: list[str], x: int, y: int):
                 answer += 1
         except IndexError:
             continue
-    # Need to diagonals so check if we found both
+    # Need two diagonals so check if we found both
     return 1 if answer == 2 else 0
 
 
