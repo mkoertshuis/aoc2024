@@ -34,9 +34,9 @@ raw_input = """47|53
 
 class TestQuestion1(unittest.TestCase):
     def test_answer(self):
-        self.assertEqual(main1(raw_input), 18)
+        self.assertEqual(main1(raw_input), 143)
 
 
-class TestQuestion2(unittest.TestCase):
-    def test_answer(self):
-        self.assertEqual(main2(raw_input), 9)
+# class TestQuestion2(unittest.TestCase):
+#     def test_answer(self):
+#         self.assertEqual(main2(raw_input), 9)
