@@ -1,19 +1,8 @@
 import time
 from utils.network import get_input
 from utils.parser import split_input
-from enum import Enum
 from collections import deque
 import numpy as np
-
-class Direction(Enum):
-    N = (0, -1)
-    E = (1, 0)
-    S = (0, 1)
-    W = (-1, 0)
-
-    def __init__(self, dx, dy):
-        self.dx = dx
-        self.dy = dy
 
 
 def parse(raw_input: str):
