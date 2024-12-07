@@ -17,3 +17,4 @@ raw_input = """....#.....
 class TestQuestion1(unittest.TestCase):
     def test_answer(self):
         self.assertEqual(main1(raw_input), 41)
+

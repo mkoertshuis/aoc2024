@@ -3,7 +3,6 @@ from utils.network import get_input
 from utils.parser import split_input
 import numpy as np
 import collections
-import functools
 
 
 def parse(raw_input: str):
@@ -23,25 +22,19 @@ def parse(raw_input: str):
     return rules, updates
 
 
-@functools.cache
-def check_order(a: int, rule: tuple[int]) -> bool:
-    return a in rule
-
-
 def check_update(update: np.ndarray[int], rules: collections.defaultdict):
     for idx, i in enumerate(update):
-        rule = tuple(rules[i])
-        for j in update[idx+1:]:
-            if not check_order(j, rule):
-                return False
-    return True
+        violations = np.in1d(update[:idx], rules[i])
+        if np.any(violations):
+            return False, np.where(violations)[0][0], idx
+    return True, -1, -1
 
 
 def main(raw_input: str):
     rules, updates = parse(raw_input)
     correct = []
     for update in updates:
-        if check_update(update,rules):
+        if check_update(update,rules)[0]:
             middle = int(len(update) // 2)
             correct.append(update[middle])
     return sum(correct)
