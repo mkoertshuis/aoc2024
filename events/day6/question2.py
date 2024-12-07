@@ -31,7 +31,7 @@ def check_loop(d, start_location, arr, obstruction) -> bool:
     x_lim, y_lim = arr.shape
 
     steps = 0
-    max_steps = x_lim * y_lim  # Prevent infinite loops
+    max_steps = x_lim * y_lim
 
     while steps < max_steps:
         dx, dy = d[0]
@@ -55,7 +55,7 @@ def check_loop(d, start_location, arr, obstruction) -> bool:
         current_location = new_location
         steps += 1
 
-    return False  # No loop found within the maximum steps
+    return False
 
 def walk(arr):
     """Traverse the grid and find all obstructions that can form loops."""
@@ -107,3 +107,5 @@ if __name__ == "__main__":
     end = time.perf_counter()
 
     print(f"Question 2: {answer} in {(end-start)*1000:.2f} ms")
+
+    # 1422 < x < 1539
