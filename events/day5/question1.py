@@ -35,7 +35,7 @@ def main(raw_input: str):
     correct = []
     for update in updates:
         if check_update(update,rules)[0]:
-            middle = int(len(update) // 2)
+            middle = len(update) // 2
             correct.append(update[middle])
     return sum(correct)
 

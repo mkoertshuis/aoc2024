@@ -25,7 +25,7 @@ def main(raw_input: str):
     for update in updates:
         if not check_update(update,rules)[0]:
             ordered_update = order_update(update,rules)
-            middle = int(len(ordered_update) // 2)
+            middle = len(ordered_update) // 2
             incorrect.append(int(ordered_update[middle]))
             break
     return sum(incorrect)
