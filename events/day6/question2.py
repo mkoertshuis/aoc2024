@@ -9,17 +9,17 @@ from utils.network import get_input
 def visualize_grid(arr, locations, obstructions):
     # Create a copy of the array to avoid modifying the original
     visualized_arr = arr
-    
+
     # Mark traversed locations with 'X'
     for x, y in locations:
         if 0 <= x < visualized_arr.shape[1] and 0 <= y < visualized_arr.shape[0]:
-            visualized_arr[y, x] = 'X'
-    
+            visualized_arr[y, x] = "X"
+
     # Mark obstructions with 'O'
     for x, y in obstructions:
         if 0 <= x < visualized_arr.shape[1] and 0 <= y < visualized_arr.shape[0]:
-            visualized_arr[y, x] = 'O'
-    
+            visualized_arr[y, x] = "O"
+
     return visualized_arr
 
 
@@ -56,6 +56,7 @@ def check_loop(d, start_location, arr, obstruction) -> bool:
         steps += 1
 
     return False
+
 
 def walk(arr):
     """Traverse the grid and find all obstructions that can form loops."""
@@ -95,10 +96,12 @@ def walk(arr):
 
     return len(obstructions)
 
+
 def main(raw_input: str):
     """Parse input and compute the number of obstructions causing loops."""
     arr = parse(raw_input)
     return walk(arr)
+
 
 if __name__ == "__main__":
     raw_input = get_input(6, 2024)

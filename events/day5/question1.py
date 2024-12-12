@@ -6,17 +6,16 @@ import collections
 
 
 def parse(raw_input: str):
-    raw_rules, updates = split_input(raw_input,"\n\n")
+    raw_rules, updates = split_input(raw_input, "\n\n")
 
-    raw_rules = split_input(raw_rules,"\n")
+    raw_rules = split_input(raw_rules, "\n")
     rules = collections.defaultdict(list)
     for rule in raw_rules:
-        k,v = split_input(rule,"|")
-        rules[int(k)].append( int(v) )
+        k, v = split_input(rule, "|")
+        rules[int(k)].append(int(v))
 
     updates = [
-        np.array(split_input(update,','),dtype=int)
-        for update in split_input(updates)
+        np.array(split_input(update, ","), dtype=int) for update in split_input(updates)
     ]
 
     return rules, updates
@@ -34,11 +33,10 @@ def main(raw_input: str):
     rules, updates = parse(raw_input)
     correct = []
     for update in updates:
-        if check_update(update,rules)[0]:
+        if check_update(update, rules)[0]:
             middle = len(update) // 2
             correct.append(update[middle])
     return sum(correct)
-
 
 
 if __name__ == "__main__":

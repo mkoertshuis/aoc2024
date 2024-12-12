@@ -10,12 +10,12 @@ def parse(raw_input: str):
 
 
 def get_location(arr):
-    indices = np.where(arr == '^')
+    indices = np.where(arr == "^")
     return int(indices[1][0]), int(indices[0][0])
 
 
 def walk(arr):
-    d = deque([(0,-1),(1,0),(0,1),(-1,0)])
+    d = deque([(0, -1), (1, 0), (0, 1), (-1, 0)])
     current_location = get_location(arr)
     locations = set([current_location])  # Initialize with current location
     x_lim, y_lim = arr.shape
@@ -30,7 +30,7 @@ def walk(arr):
 
         # Check for wall
         if arr[new_location[1]][new_location[0]] == "#":
-            d.rotate(-1) # next direction
+            d.rotate(-1)  # next direction
             continue
 
         # Update the current location

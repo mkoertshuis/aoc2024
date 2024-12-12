@@ -3,14 +3,15 @@ from events.day7.question1 import add, calculate, mul, parse
 from utils.network import get_input
 
 
-def concat(a: int, b: int) -> int: return int(f"{a}{b}")
+def concat(a: int, b: int) -> int:
+    return int(f"{a}{b}")
 
 
 def main(raw_input: str):
     values, equations = parse(raw_input)
     answer = 0
     for value, equation in zip(values, equations):
-        if calculate(equation,value,(concat,add,mul)):
+        if calculate(equation, value, (concat, add, mul)):
             answer += int(value)
     return answer
 

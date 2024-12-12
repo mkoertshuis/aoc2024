@@ -4,18 +4,20 @@ from events.day5.question1 import parse, check_update
 import numpy as np
 
 
-def order_update(update,rules):
+def order_update(update, rules):
     ordered_lst = np.array(update)
     while True:
-        vld, vld_i, inp_i = check_update(ordered_lst,rules)
+        vld, vld_i, inp_i = check_update(ordered_lst, rules)
         if vld:
             break
-        ordered_lst = np.concatenate((
-            ordered_lst[:vld_i],
-            [ordered_lst[inp_i]],
-            ordered_lst[vld_i:inp_i],
-            ordered_lst[inp_i+1:]
-        ))
+        ordered_lst = np.concatenate(
+            (
+                ordered_lst[:vld_i],
+                [ordered_lst[inp_i]],
+                ordered_lst[vld_i:inp_i],
+                ordered_lst[inp_i + 1 :],
+            )
+        )
     return ordered_lst
 
 
@@ -23,13 +25,12 @@ def main(raw_input: str):
     rules, updates = parse(raw_input)
     incorrect = []
     for update in updates:
-        if not check_update(update,rules)[0]:
-            ordered_update = order_update(update,rules)
+        if not check_update(update, rules)[0]:
+            ordered_update = order_update(update, rules)
             middle = len(ordered_update) // 2
             incorrect.append(int(ordered_update[middle]))
             break
     return sum(incorrect)
-
 
 
 if __name__ == "__main__":

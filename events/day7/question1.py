@@ -5,19 +5,23 @@ from utils.parser import split_input
 import numpy as np
 
 
-def add(a: int, b: int) -> int: return int(a) + int(b)
-def mul(a: int, b: int) -> int: return int(a) * int(b)
+def add(a: int, b: int) -> int:
+    return int(a) + int(b)
+
+
+def mul(a: int, b: int) -> int:
+    return int(a) * int(b)
 
 
 def parse(raw_input: str):
-    arr = np.array([split_input(x,":") for x in split_input(raw_input)])
-    values = arr[:,0]
-    equations = [split_input(x," ") for x in arr[:,1]]
+    arr = np.array([split_input(x, ":") for x in split_input(raw_input)])
+    values = arr[:, 0]
+    equations = [split_input(x, " ") for x in arr[:, 1]]
     return values, equations
 
 
 def calculate(equation, value, operands):
-    strategies = product(operands,repeat=len(equation)-1)
+    strategies = product(operands, repeat=len(equation) - 1)
     for strategy in strategies:
         queue = iter(equation)
         register = next(queue)
@@ -32,7 +36,7 @@ def main(raw_input: str):
     values, equations = parse(raw_input)
     answer = 0
     for value, equation in zip(values, equations):
-        if calculate(equation,value,(add,mul)):
+        if calculate(equation, value, (add, mul)):
             answer += int(value)
     return answer
 
