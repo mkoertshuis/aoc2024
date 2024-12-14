@@ -39,14 +39,12 @@ def compress(disk: str) -> list:
 
 
 def checksum(compressed: str):
-    return sum([math.prod([a, int(b)]) for a, b in enumerate(compressed)])
+    return sum(math.prod([a, int(b)]) for a, b in enumerate(compressed) if b)
 
 
 def main(raw_input: str):
     disk = fill_disk(raw_input)
     compressed = compress(disk)
-    if compressed[-1] is None:
-        compressed = compressed[:-1]
     return checksum(compressed)
 
 
