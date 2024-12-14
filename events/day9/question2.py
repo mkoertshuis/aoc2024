@@ -24,12 +24,12 @@ def compress(disk: list) -> list:
     result = copy.deepcopy(disk)
     while disk:
         file = disk.pop()
-        for idx, partition in enumerate(result[:len(disk)]):
+        for idx, partition in enumerate(result[: len(disk)]):
             if partition[0] is None and len(partition) >= len(file):
                 # Move the file to this partition
                 result[idx] = file
                 # Remove moved space with None
-                for j, block in enumerate(result[idx+1:],idx+1):
+                for j, block in enumerate(result[idx + 1 :], idx + 1):
                     if block == file:
                         result[j] = [None] * len(file)
                         break
@@ -51,7 +51,7 @@ def main(raw_input: str):
 
 
 if __name__ == "__main__":
-    raw_input = get_input(9, 2024).replace("\n","")
+    raw_input = get_input(9, 2024).replace("\n", "")
     start = time.perf_counter()
     answer = main(raw_input)
     end = time.perf_counter()
