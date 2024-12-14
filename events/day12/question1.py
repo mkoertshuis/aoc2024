@@ -13,7 +13,6 @@ class Garden:
         # Fill the garden
         self.flood_fill(point)
 
-
     def add_plot(self, plot: GridPoint):
         if plot not in self.plots:
             self.plots.add(plot)
@@ -23,17 +22,14 @@ class Garden:
                     perimiter -= 2
             self.perimiter += perimiter
 
-
     def flood_fill(self, plot: GridPoint):
         for neighbor in self.grid.neighbors(plot):
             if self.grid.get(neighbor) == self.id and neighbor not in self.plots:
                 self.add_plot(neighbor)
                 self.flood_fill(neighbor)
 
-
     def price(self):
-        return len(self.plots)*self.perimiter
-
+        return len(self.plots) * self.perimiter
 
 
 def main(raw_input: str):
@@ -43,7 +39,7 @@ def main(raw_input: str):
     for point in grid:
         if point in visited:
             continue
-        garden = Garden(grid,point)
+        garden = Garden(grid, point)
         answer += garden.price()
         visited.update(garden.plots)
 
