@@ -14,11 +14,9 @@ def blink(stone: int, depth: int, max_depth: int):
 
         a_str = str(stone)
         if len(a_str) % 2 == 0:
-            mask = 10 ** (len(a_str) // 2)
-            left = stone // mask
-            right = stone % mask
-            return blink(left, depth + 1, max_depth) + blink(
-                right, depth + 1, max_depth
+            mid = len(a_str) // 2
+            return blink(int(a_str[mid:]), depth + 1, max_depth) + blink(
+                int(a_str[:mid]), depth + 1, max_depth
             )
 
         stone *= 2024
